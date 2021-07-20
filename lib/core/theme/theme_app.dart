@@ -18,11 +18,7 @@ class ThemeApp {
 
   static AppBarTheme buildAppBarTheme() {
     return AppBarTheme(
-      backgroundColor: Colors.transparent,
-      elevation: 0,
-      iconTheme: IconThemeData(
-        color: AppColor.primaryColor,
-      ),
+      elevation: 1,
     );
   }
 

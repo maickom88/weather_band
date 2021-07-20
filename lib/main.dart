@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:weather_band/core/constants/routes_constants.dart';
 
+import 'core/routes/routes.dart';
 import 'core/theme/theme.dart';
 
 void main() {
@@ -12,6 +14,8 @@ class WeatherBand extends StatelessWidget {
     return MaterialApp(
       title: 'Weather Band',
       theme: ThemeApp.theme(),
+      initialRoute: RoutesConsts.home,
+      routes: Routers.pages,
     );
   }
 }
