@@ -20,4 +20,14 @@ class WeatherRepository implements Repository {
       return Left(e);
     }
   }
+
+  @override
+  Future<Either<Failure, List<ForecastEntity>>> getCurrent(
+      List<CityEntity> input) async {
+    try {
+      return Right(await datasource.getCurrent(input));
+    } on Failure catch (e) {
+      return Left(e);
+    }
+  }
 }
