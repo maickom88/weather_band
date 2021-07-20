@@ -1,16 +1,7 @@
-# weather_band
+## <img width="30" height="30" src="https://camo.githubusercontent.com/3d584381e99621f38061bffd9a798ea0b2979a05dfe29c916b7dd02aedbedad9/68747470733a2f2f666c75747465722e6465762f696d616765732f66617669636f6e2e706e67"> Weather Band
 
-A new Flutter project.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+👇🏼 Clone the repository and run the command below to install the dependencies
+```dart
+    flutter pub get 
+```
