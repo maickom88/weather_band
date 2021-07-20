@@ -1,7 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
 import 'package:weather_band/data/models/models.dart';
-import 'package:weather_band/domain/entities/city_entity.dart';
 import 'package:weather_band/domain/entities/entities.dart';
 import 'package:weather_band/external/open_weather.dart';
 
