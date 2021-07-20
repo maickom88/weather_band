@@ -1,3 +1,4 @@
 class RoutesConsts {
-  static const home = '/home';
+  static const home = '/';
+  static const details = '/details';
 }

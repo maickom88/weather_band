@@ -30,9 +30,9 @@ class ForecastModel implements ForecastEntity {
 
   factory ForecastModel.fromMap(Map<String, dynamic> map) {
     return ForecastModel(
-      temp: map['main']['temp'],
-      maxTemp: map['main']['temp_max'],
-      minTemp: map['main']['temp_min'],
+      temp: map['main']['temp'].toDouble(),
+      maxTemp: map['main']['temp_max'].toDouble(),
+      minTemp: map['main']['temp_min'].toDouble(),
       description: map['weather'][0]['description'],
       icon: map['weather'][0]['icon'],
       date: DateTime.parse(map['dt_txt']),
