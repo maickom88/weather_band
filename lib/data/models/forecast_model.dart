@@ -35,7 +35,9 @@ class ForecastModel implements ForecastEntity {
       minTemp: map['main']['temp_min'].toDouble(),
       description: map['weather'][0]['description'],
       icon: map['weather'][0]['icon'],
-      date: DateTime.parse(map['dt_txt']),
+      date: map['dt_txt'] != null
+          ? DateTime.parse(map['dt_txt'])
+          : DateTime.now(),
     );
   }
 }

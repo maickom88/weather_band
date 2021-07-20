@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:http/http.dart';
-import 'package:weather_band/core/constants/url_constants.dart';
-import 'package:weather_band/core/errors/errors.dart';
 
+import '../core/constants/constants.dart';
+import '../core/errors/errors.dart';
 import '../data/datasources/datasource.dart';
 import '../data/models/forecast_model.dart';
 import '../domain/entities/city_entity.dart';
@@ -41,5 +41,23 @@ class OpenWeather implements Datasource {
       return NotAuthorized();
     }
     return ServerError();
+  }
+
+  @override
+  Future<List<ForecastModel>> getCurrent(List<CityEntity> input) async {
+    try {
+      final result = await Future.wait<ForecastModel>(input.map((city) async {
+        final response = await httpClient.get(
+          Uri.parse(UrlConst.getWeatherUrlWithCity(
+              city: city.city, uf: city.code, isActual: true)),
+        );
+        final body = json.decode(response.body);
+        final forecasts = ForecastModel.fromMap(body);
+        return forecasts;
+      }));
+      return result;
+    } catch (e) {
+      throw _handlerError();
+    }
   }
 }
