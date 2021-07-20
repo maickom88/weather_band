@@ -1,13 +1,11 @@
-import 'dart:convert';
-
 import '../../domain/entities/entities.dart';
 
 class ForecastModel implements ForecastEntity {
   final double temp;
   final double maxTemp;
   final double minTemp;
-  final String main;
-  final String description;
+
+  final String? description;
   final String icon;
   final DateTime date;
   ForecastModel({
@@ -15,8 +13,7 @@ class ForecastModel implements ForecastEntity {
     required this.temp,
     required this.maxTemp,
     required this.minTemp,
-    required this.main,
-    required this.description,
+    this.description,
     required this.icon,
   });
 
@@ -25,7 +22,6 @@ class ForecastModel implements ForecastEntity {
       'temp': temp,
       'maxTemp': maxTemp,
       'minTemp': minTemp,
-      'main': main,
       'description': description,
       'icon': icon,
       'date': date.millisecondsSinceEpoch,
@@ -34,18 +30,12 @@ class ForecastModel implements ForecastEntity {
 
   factory ForecastModel.fromMap(Map<String, dynamic> map) {
     return ForecastModel(
-      temp: map['temp'],
-      maxTemp: map['maxTemp'],
-      minTemp: map['minTemp'],
-      main: map['main'],
-      description: map['description'],
-      icon: map['icon'],
-      date: DateTime.fromMillisecondsSinceEpoch(map['date']),
+      temp: map['main']['temp'],
+      maxTemp: map['main']['temp_max'],
+      minTemp: map['main']['temp_min'],
+      description: map['weather'][0]['description'],
+      icon: map['weather'][0]['icon'],
+      date: DateTime.parse(map['dt_txt']),
     );
   }
-
-  String toJson() => json.encode(toMap());
-
-  factory ForecastModel.fromJson(String source) =>
-      ForecastModel.fromMap(json.decode(source));
 }
